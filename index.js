@@ -10,12 +10,11 @@ var cors = require('cors')
 app.use(cors())
 const socketIo = require("socket.io")(server,{
   cors: {
-    origin: "*", 
+    origin: "https://webappchatexample.herokuapp.com", 
     methods: ["GET", "POST"],
   }
 });
 let arr = []
-
 socketIo.on("connection", (socket) => {
   console.log("New client connected" + socket.id);
   socket.emit("sendId", socket.id);
@@ -24,11 +23,22 @@ socketIo.on("connection", (socket) => {
     arr.push({...data, id: socket.id})
     socketIo.emit("sendDataServer", arr);
   })
-  
+
+  socket.on("sendUser", function (data) {
+
+    socketIo.emit("sever_send_newuser", data);
+  })
+
   socket.on("disconnect", () => {
     console.log("Client disconnected");
   });
 });
+
+socketIo.on('ping', () =>{
+  console.log('ping')
+})
+
+
 
 app.get('/test', (req, res, next) => {
   res.send(arr);
@@ -48,6 +58,6 @@ app.post('/signup', UserController.signup)
 app.post('/loginFb', UserController.loginFb)
 app.post('/login', UserController.login)
 
-server.listen(process.env.PORT || 8000, () => {
-  console.log('Server đang chay tren cong 8000');
+server.listen(process.env.PORT || 5000, () => {
+  console.log('Server đang chay tren cong 5000');
 });
