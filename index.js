@@ -43,6 +43,6 @@ app.post('/signup', UserController.signup)
 app.post('/loginFb', UserController.loginFb)
 app.post('/login', UserController.login)
 
-server.listen(8000, () => {
+server.listen(process.env.PORT || 8000, () => {
   console.log('Server đang chay tren cong 8000');
 });
