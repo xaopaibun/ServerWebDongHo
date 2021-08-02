@@ -8,12 +8,7 @@ const server = http.createServer(app);
 connectDb()
 var cors = require('cors')
 app.use(cors())
-const socketIo = require("socket.io")(server, {
-  cors: {
-    origin: "https://webappchatexample.herokuapp.com",
-    methods: ["GET", "POST"]
-  }
-});
+const socketIo = require("socket.io")(server);
 let arr = []
 
 socketIo.on("connection", (socket) => {
