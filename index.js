@@ -10,7 +10,8 @@ var cors = require('cors')
 app.use(cors())
 const socketIo = require("socket.io")(server, {
   cors: {
-    origin: "*",
+    origin: "https://webappchatexample.herokuapp.com",
+    methods: ["GET", "POST"]
   }
 });
 let arr = []
