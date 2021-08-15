@@ -1,62 +1,27 @@
 var express = require('express')
 const http = require("http");
-const connectDb = require('./src/config/connectDb');
 var app = express()
-
-const UserController = require('./src/controllers/user.controller');
 const server = http.createServer(app);
-connectDb()
-var cors = require('cors')
+const bodyParser = require("body-parser");
+const ProductController = require('./src/controllers/product.controller');
+const connectDb = require('./src/config/connectDb');
+const cors = require('cors');
+
+app.use(bodyParser.json());
+
+// parse requests of content-type: application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+
+connectDb();
 app.use(cors())
-const socketIo = require("socket.io")(server,{
-  cors: {
-    origin: "https://webappchatexample.herokuapp.com", 
-    methods: ["GET", "POST"],
-  }
-});
-let arr = []
-socketIo.on("connection", (socket) => {
-  console.log("New client connected" + socket.id);
-  socket.emit("sendId", socket.id);
-  socket.emit("sendDataServer", arr);
-  socket.on("sendDataClient", function (data) { 
-    arr.push({...data, id: socket.id})
-    socketIo.emit("sendDataServer", arr);
-  })
-
-  socket.on("sendUser", function (data) {
-
-    socketIo.emit("sever_send_newuser", data);
-  })
-
-  socket.on("disconnect", () => {
-    console.log("Client disconnected");
-  });
-});
-
-socketIo.on('ping', () =>{
-  console.log('ping')
-})
 
 
-
-app.get('/test', (req, res, next) => {
-  res.send(arr);
-});
-
-app.post('/test2', (req, res, next) => {
-  console.log('abc')
-  res.send('abc', req.body.test)
-});
-
-app.post('/', function (req, res) {
-  console.log('abc')
-  res.send('abc', req.body.test)
-});
-
-app.post('/signup', UserController.signup)
-app.post('/loginFb', UserController.loginFb)
-app.post('/login', UserController.login)
+app.get('/getproduct', ProductController.getProduct )
+app.post('/addproduct', ProductController.add_product)
+app.get('/getproduct/:_id', ProductController.getProductByID )
+app.delete('/deleteproduct/:_id', ProductController.removeProductByID )
+app.put('/updateproduct/:_id', ProductController.updateProductByID )
+app.post('/getproductbyname', ProductController.findProductByName )
 
 server.listen(process.env.PORT || 5000, () => {
   console.log('Server đang chay tren cong 5000');
