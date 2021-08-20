@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const ProductController = require('./src/controllers/product.controller');
 const connectDb = require('./src/config/connectDb');
 const cors = require('cors');
-
+require("dotenv").config();
 app.use(bodyParser.json());
 
 /// parse requests of content-type: application/x-www-form-urlencoded
