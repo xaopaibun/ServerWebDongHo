@@ -22,7 +22,7 @@ app.post('/addproduct', ProductController.add_product)
 app.get('/getproduct/:_id', ProductController.getProductByID )
 app.delete('/deleteproduct/:_id', ProductController.removeProductByID )
 app.put('/updateproduct/:_id', ProductController.updateProductByID )
-app.post('/getproductbyname', ProductController.findProductByName )
+app.post('/getproductbyname', ProductController.findProductsByName )
 
 server.listen(process.env.PORT || 5000, () => {
   console.log('Server đang chay tren cong 5000');
