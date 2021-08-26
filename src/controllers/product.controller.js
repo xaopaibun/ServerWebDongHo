@@ -38,7 +38,7 @@ const updateProductByID = async (req, res, next) => {
 }
 
 
-const findProductByName = async (req, res, next) => {
+const findProductsByName = async (req, res, next) => {
     try {
        const data = await productModel.findProductByName(req.body.name);
         res.status(200).send(data);
@@ -63,5 +63,5 @@ module.exports = {
     getProductByID : getProductByID,
     removeProductByID : removeProductByID,
     updateProductByID : updateProductByID,
-    findProductByName : findProductByName
+    findProductsByName : findProductsByName
 }
