@@ -1,6 +1,7 @@
 var express = require('express')
 const http = require("http");
 var app = express()
+const path = require('path');
 const server = http.createServer(app);
 const bodyParser = require("body-parser");
 const ProductController = require('./src/controllers/product.controller');
