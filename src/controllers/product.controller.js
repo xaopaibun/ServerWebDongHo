@@ -40,7 +40,7 @@ const updateProductByID = async (req, res, next) => {
 
 const findProductByName = async (req, res, next) => {
     try {
-       const data = await productModel.findProductByName(req.body.name);
+       const data = await productModel.findProductsByName(req.body.name);
         res.status(200).send(data);
     } catch (error) {
         res.status(203).send({ message: 'Find Product Failed'});
@@ -56,6 +56,17 @@ const getProduct = async (req, res, next) => {
     }
 }
 
+const getProductOfPage = async (req, res, next) => {
+    try {
+       const _page = parseInt(req.params._page);
+       const _limit = parseInt(req.params._limit);
+        const data = await productModel._getProduct(_limit, _page);
+        res.status(200).send(data);
+    } catch (error) {
+        res.status(500).send({ message:  "Error Occured" });
+    }
+}
+
 
 module.exports = {
     add_product: add_product,
@@ -63,5 +74,6 @@ module.exports = {
     getProductByID : getProductByID,
     removeProductByID : removeProductByID,
     updateProductByID : updateProductByID,
-    findProductByName : findProductByName
+    findProductByName : findProductByName,
+    getProductOfPage :  getProductOfPage
 }

@@ -18,15 +18,17 @@ ProductSchema.statics = {
     getProduct(){
         return this.find({}).exec();
     },
+    _getProduct(limit, page){
+        return this.find({}).skip((page - 1)* limit).limit(limit);
+    },
     findProductByID(id){
         return this.findOne({"_id": id }).exec();
     },
-    findProductByName(name){
+    findProductsByName(name){
         return this.find({"name":  {'$regex': name} });
     },
     findProductByIDAndUpdateProduct(id, Product){
-        console.log(Product)
-        return this.findOneAndUpdate({"_id": id},{ "name":Product.name,"content" :Product.content ,"amount" :  Product.amount, "image": Product.image,"price": Product.price,  "updateAt": Date.now()})
+        return this.findOneAndUpdate({"_id": id},{ "name":Product.name,"content " :Product.content ,"amount" :  Product.amount, "image": Product.image,"price": Product.price,  "updateAt": Date.now()})
     },
     removeProductByID(id){
         return this.findByIdAndRemove(id).exec();
