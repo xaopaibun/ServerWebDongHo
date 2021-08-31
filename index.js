@@ -17,15 +17,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 connectDb();
 app.use(cors())
 
-app.get('/getproduct', ProductController.getProduct )
-app.post('/addproduct',middleware.authenToken,  ProductController.add_product)
-app.get('/getproduct/:_id', ProductController.getProductByID )
-app.delete('/deleteproduct/:_id',middleware.authenToken,  ProductController.removeProductByID )
-app.put('/updateproduct/:_id',middleware.authenToken,  ProductController.updateProductByID )
-app.post('/getproductbyname', ProductController.findProductByName )
-app.get('/listproduct&page=:_page&limit=:_limit',ProductController.getProductOfPage )
-app.post('/signup', UserController.signup)
-app.post('/loginAdmin', UserController.loginAdmin)
+app.get('/api/v1/getproduct', ProductController.getProduct )
+app.post('/api/v1/addproduct',middleware.authenToken,  ProductController.add_product)
+app.get('/api/v1/getproduct/:_id', ProductController.getProductByID )
+app.delete('/api/v1/deleteproduct/:_id',middleware.authenToken,  ProductController.removeProductByID )
+app.put('/api/v1/updateproduct/:_id',middleware.authenToken,  ProductController.updateProductByID )
+app.post('/api/v1/getproductbyname', ProductController.findProductByName )
+app.get('/api/v1/listproduct&page=:_page&limit=:_limit',ProductController.getProductOfPage )
+app.post('/api/v1/signup', UserController.signup)
+app.post('/api/v1/loginAdmin', UserController.loginAdmin)
 
 server.listen(process.env.PORT || 5000, () => {
   console.log('Server đang chay tren cong 5000');
