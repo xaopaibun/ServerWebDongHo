@@ -2,8 +2,8 @@ const productModel = require('../models/product.model');
 
 const add_product = async (req, res, next) => {
     try {
-        await productModel.createProduct(req.body);
-        res.status(200).send({ message: 'Add Product Success'});
+        const data = await productModel.createProduct(req.body);
+        res.status(200).send({ message: 'Add Product Success', data : data});
     } catch (error) {
         res.status(203).send({ message: 'Update Failed'});
     }
@@ -30,8 +30,8 @@ const removeProductByID = async (req, res, next) => {
 
 const updateProductByID = async (req, res, next) => {
     try {
-       await productModel.findProductByIDAndUpdateProduct(req.params._id, req.body);
-        res.status(200).send({ message: 'Update Product Success'});
+       const data = await productModel.findProductByIDAndUpdateProduct(req.params._id, req.body);
+        res.status(200).send({ message: 'Update Product Success',   data :  data});
     } catch (error) {
         res.status(203).send({ message: 'Update Product Failed'});
     }

@@ -16,10 +16,10 @@ ProductSchema.statics = {
         return this.create(item);
     },
     getProduct(){
-        return this.find({}).exec();
+        return this.find({}).sort( {"createAt" : -1}).exec();
     },
     _getProduct(limit, page){
-        return this.find({}).skip((page - 1)* limit).limit(limit);
+        return this.find({}).skip((page - 1)* limit).limit(limit).sort( {"createAt" : -1}).exec();
     },
     findProductByID(id){
         return this.findOne({"_id": id }).exec();
@@ -28,7 +28,7 @@ ProductSchema.statics = {
         return this.find({"name":  {'$regex': name} });
     },
     findProductByIDAndUpdateProduct(id, Product){
-        return this.findOneAndUpdate({"_id": id},{ "name":Product.name,"content " :Product.content ,"amount" :  Product.amount, "image": Product.image,"price": Product.price,  "updateAt": Date.now()})
+        return this.findOneAndUpdate({"_id": id},{$set:{ "name":Product.name,"content " :Product.content ,"amount" :  Product.amount, "image": Product.image,"price": Product.price,  "updateAt": Date.now()}})
     },
     removeProductByID(id){
         return this.findByIdAndRemove(id).exec();
