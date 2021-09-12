@@ -1,0 +1,40 @@
+GET http://localhost:5000/api/v1/product/getproduct
+Content-Type: application/json
+###
+
+GET http://localhost:5000/crawler/category_product=dong-ho-doi
+
+###
+POST http://localhost:5000/api/v1/auth/loginAdmin
+Content-Type: application/json
+
+{
+    "username": "xaopaibun",
+    "password": "vanquy"
+}
+
+###
+DELETE http://localhost:5000/api/v1/product/deleteproduct/61364700936493001650a4ce
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Inhhb3BhaWJ1biIsImlhdCI6MTYzMTA5NTQ0OCwiZXhwIjoxNjMxMDk5MDQ4fQ.ctZKzg2QaXcNYZ9hZ8z8fbVJZXwzVhQ2WFwF0fORfaA
+
+
+
+###
+POST http://localhost:5000/api/v1/product/addproduct
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Inhhb3BhaWJ1biIsImlhdCI6MTYzMTA5NTY4NSwiZXhwIjoxNjMxMDk5Mjg1fQ.pqf1Fc1qmBPMosFiOp_095Cb3yQV7gOwYO246Ht2dwY
+
+{
+    "name": "ĐỒNG HỒ EPOS SWISS E-3435.313.20.25.25",
+    "image": "https://www.dangquangwatch.vn/upload/img_big/1722595503_dong-ho-thuy-sy10.jpg"
+}
+
+###
+PUT http://localhost:5000/api/v1/product/updateproduct/61388c01095ce8b3979fca5a
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Inhhb3BhaWJ1biIsImlhdCI6MTYzMTA5NTY4NSwiZXhwIjoxNjMxMDk5Mjg1fQ.pqf1Fc1qmBPMosFiOp_095Cb3yQV7gOwYO246Ht2dwY
+
+{
+    "name": "ĐỒNG HỒ EPOS SWISS E-3435.313.24.26.25",
+    "image": "https://www.dangquangwatch.vn/upload/product/1950658518_1331374850_dong-ho-thuy-sy2.jpg"
+}

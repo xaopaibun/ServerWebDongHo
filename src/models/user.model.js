@@ -18,8 +18,8 @@ UserSchema.statics = {
     findByUsername(username){
         return this.findOne({"username": username, "status": false });
     },
-    CheckAdmin(username){
-        return this.findOne({"username": username, "status": true});
+    CheckAdmin(id){
+        return this.findOne({"_id": id, "status": true});
     },
 
 }
