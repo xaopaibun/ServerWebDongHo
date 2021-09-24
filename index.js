@@ -6,17 +6,17 @@ const bodyParser = require("body-parser");
 const connectDb = require('./src/config/connectDb');
 const path = require('path');
 const cors = require('cors');
-
+const passport = require('passport')
 const AuthenRouter = require('./src/routers/authen')
 const ProductRouter = require('./src/routers/product')
 const diemSV = require("./src/controllers/diemSV.controller")
 require('dotenv').config();
-
+require('./src/middleware/passport');
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(passport.initialize());
 connectDb();
 
 app.use(cors())
@@ -24,6 +24,7 @@ app.use('/api/v1/auth', AuthenRouter)
 app.use('/api/v1/product', ProductRouter)
 
 app.get('/', (req, res) => res.send("Server Start Success"))
+
 
 app.get("/caodata", diemSV.CaoDataDiemSinhVienEPU)
 app.get("/caolichhoc", diemSV.CaoDataLichHocSinhVienEPU)

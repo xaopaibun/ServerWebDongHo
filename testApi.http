@@ -1,3 +1,19 @@
+###
+POST http://localhost:5000/api/v1/auth/facebook
+Content-Type: application/json
+
+{
+    "access_token" : "EAADh4aQZAwRcBAB2sg63tlulJVdJt4KdoEpeANY8yGb8GX4PFf4psf3wZBkaASWBEG3uYo9hNyKKRkdL43HlZB8AUPLE4qpLTQrQiwxdeJKnYJTQL7g9MSnKSP6KRQ5bBWFVnCANkML0niQNXNEhTOWht37TeDZChO1HEMb6B5z6TZCOHMWsqel8gvqdev5wEXEHfi4MMBY5aBrcSCfw8eak3au2zAAVfcsaNMqkuVoq7Il1YFWAg"
+}
+
+###
+POST http://localhost:5000/api/v1/auth/google
+Content-Type: application/json
+
+{
+    "access_token" : "ya29.a0ARrdaM_kEB0BGl8sf17Cy9HmFwDbOv-W7GlTz72UiEdLrS2hUI3Y6WqTSbpEMJwaL16fbaT6Vw8Eg3Oo330GWTXGOms4NQ_duDHKgbviUEKIepeVjwY_hWcW-ymAqGMOt9fjluK_0-RaXR32BqsN1i-C1KjS"
+}
+###
 GET http://localhost:5000/api/v1/product/getproduct
 Content-Type: application/json
 ###

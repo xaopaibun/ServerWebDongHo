@@ -1,9 +1,25 @@
-
 const userModel = require('../models/user.model')
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-
+const passport = require('passport');
 const Util = require('../config/index')
+
+const authenFacebook =  (req, res, next)  => 
+    passport.authenticate('facebook-token', async function(error, user, info) {
+        if (error) return res.serverError(error);
+        if (info) return res.unauthorized(info);
+        let accessToken = await  Util.GenerateToken({_id : user._id}, '3600s');
+        return res.send({accessToken, success: true, message: 'Login Success' });
+    })(req, res);
+
+const authenGoogle =  (req, res, next)  => 
+    passport.authenticate('google-plus-token', async function(error, user, info) {
+        if (error) return res.serverError(error);
+        if (info) return res.unauthorized(info);
+        let accessToken = await Util.GenerateToken({_id : user._id}, '3600s');
+        return res.send({accessToken, success: true, message: 'Login Success' });
+    })(req, res);
+  
 
 const loginAdmin = async (req, res, next) => {
     try {
@@ -54,5 +70,7 @@ const signup = async (req, res, next) => {
 
 module.exports = {
     loginAdmin,
-    signup
+    signup,
+    authenGoogle,
+    authenFacebook
 }
