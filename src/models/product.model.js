@@ -12,26 +12,27 @@ let ProductSchema = new Schema({
 });
 
 ProductSchema.statics = {
-    createProduct(item){
-        return this.create(item);
+    createProduct(data) {
+        return this.create(data);
     },
-    getProduct(){
-        return this.find({}).sort( {"createAt" : -1}).exec();
+    getProduct() {
+        return this.find({}).sort({ "createAt": -1 }).exec();
     },
-    _getProduct(limit, page){
-        return this.find({}).skip((page - 1)* limit).limit(limit).sort( {"createAt" : -1}).exec();
+    _getProduct(limit, page) {
+        return this.find({}).skip((page - 1) * limit).limit(limit).sort({ "createAt": -1 }).exec();
     },
-    findProductByID(id){
-        return this.findOne({"_id": id }).exec();
+    findProductByID(id) {
+        return this.findOne({ "_id": id }).exec();
     },
-    findProductsByName(name){
-        return this.find({"name":  {'$regex': name} });
+    findProductsByName(name) {
+        return this.find({ "name": { '$regex': name } });
     },
-    findProductByIDAndUpdateProduct(id, Product){
-        return this.findOneAndUpdate({"_id": id},{$set:{ "name":Product.name,"content " :Product.content ,"amount" :  Product.amount, "image": Product.image,"price": Product.price,  "updateAt": Date.now()}})
+    findProductByIDAndUpdateProduct(id, Product) {
+        return this.findOneAndUpdate({ "_id": id }, { $set: { "name": Product.name, "content ": Product.content, "amount": Product.amount, "image": Product.image, "price": Product.price, "updateAt": Date.now() } })
     },
-    removeProductByID(id){
+    removeProductByID(id) {
+        console.log(id)
         return this.findByIdAndRemove(id).exec();
     },
 }
-module.exports = mongoose.model("product",ProductSchema);
+module.exports = mongoose.model("product", ProductSchema);
