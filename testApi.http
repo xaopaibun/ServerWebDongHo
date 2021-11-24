@@ -1,0 +1,56 @@
+###
+POST http://localhost:5000/api/v1/auth/facebook
+Content-Type: application/json
+
+{
+    "access_token" : "EAADh4aQZAwRcBAB2sg63tlulJVdJt4KdoEpeANY8yGb8GX4PFf4psf3wZBkaASWBEG3uYo9hNyKKRkdL43HlZB8AUPLE4qpLTQrQiwxdeJKnYJTQL7g9MSnKSP6KRQ5bBWFVnCANkML0niQNXNEhTOWht37TeDZChO1HEMb6B5z6TZCOHMWsqel8gvqdev5wEXEHfi4MMBY5aBrcSCfw8eak3au2zAAVfcsaNMqkuVoq7Il1YFWAg"
+}
+
+###
+POST http://localhost:5000/api/v1/auth/google
+Content-Type: application/json
+
+{
+    "access_token" : "ya29.a0ARrdaM_kEB0BGl8sf17Cy9HmFwDbOv-W7GlTz72UiEdLrS2hUI3Y6WqTSbpEMJwaL16fbaT6Vw8Eg3Oo330GWTXGOms4NQ_duDHKgbviUEKIepeVjwY_hWcW-ymAqGMOt9fjluK_0-RaXR32BqsN1i-C1KjS"
+}
+###
+GET http://localhost:5000/api/v1/product/getproduct
+Content-Type: application/json
+###
+
+GET http://localhost:5000/crawler/category_product=dong-ho-doi
+
+###
+POST http://localhost:5000/api/v1/auth/loginAdmin
+Content-Type: application/json
+
+{
+    "username": "xaopaibun",
+    "password": "vanquy"
+}
+
+###
+DELETE http://localhost:5000/api/v1/product/deleteproduct/61364700936493001650a4ce
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Inhhb3BhaWJ1biIsImlhdCI6MTYzMTA5NTQ0OCwiZXhwIjoxNjMxMDk5MDQ4fQ.ctZKzg2QaXcNYZ9hZ8z8fbVJZXwzVhQ2WFwF0fORfaA
+
+
+
+###
+POST http://localhost:5000/api/v1/product/addproduct
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Inhhb3BhaWJ1biIsImlhdCI6MTYzMTA5NTY4NSwiZXhwIjoxNjMxMDk5Mjg1fQ.pqf1Fc1qmBPMosFiOp_095Cb3yQV7gOwYO246Ht2dwY
+
+{
+    "name": "ĐỒNG HỒ EPOS SWISS E-3435.313.20.25.25",
+    "image": "https://www.dangquangwatch.vn/upload/img_big/1722595503_dong-ho-thuy-sy10.jpg"
+}
+
+###
+PUT http://localhost:5000/api/v1/product/updateproduct/61388c01095ce8b3979fca5a
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Inhhb3BhaWJ1biIsImlhdCI6MTYzMTA5NTY4NSwiZXhwIjoxNjMxMDk5Mjg1fQ.pqf1Fc1qmBPMosFiOp_095Cb3yQV7gOwYO246Ht2dwY
+
+{
+    "name": "ĐỒNG HỒ EPOS SWISS E-3435.313.24.26.25",
+    "image": "https://www.dangquangwatch.vn/upload/product/1950658518_1331374850_dong-ho-thuy-sy2.jpg"
+}
