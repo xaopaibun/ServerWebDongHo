@@ -8,7 +8,7 @@ passport.use(
       clientID: process.env.FACEBOOK_CLIENT_ID,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
     },
-    async (accessToken, refreshToken, profile, done)  => {
+    async (accessToken, refreshToken, profile, done) => {
       try {
         const user = await userModel.CheckLoginFB(profile.id);
         if (user) return done(null, user);
@@ -36,7 +36,7 @@ passport.use(
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       passReqToCallback: true,
     },
-    async  (req, accessToken, refreshToken, profile, done) =>  {
+    async (req, accessToken, refreshToken, profile, done) => {
       try {
         const user = await userModel.CheckLoginGoogle(profile.id);
         if (user) return done(null, user);
