@@ -10,7 +10,7 @@ const cors = require("cors");
 const passport = require("passport");
 const AuthenRouter = require("./src/routers/authen");
 const ProductRouter = require("./src/routers/product");
-const diemSV = require("./src/controllers/diemSV.controller");
+
 require("dotenv").config();
 require("./src/middleware/passport");
 app.use(bodyParser.json());
@@ -30,8 +30,7 @@ app.use("/api/v1/product", ProductRouter);
 
 app.get("/", (req, res) => res.send("Server Start Success"));
 
-app.get("/caodata", diemSV.CaoDataDiemSinhVienEPU);
-app.get("/caolichhoc", diemSV.CaoDataLichHocSinhVienEPU);
+
 server.listen(process.env.PORT || 5000, () => {
   console.log("Server đang chay tren cong 5000");
 });
